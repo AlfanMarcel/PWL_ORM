@@ -162,4 +162,13 @@ class MahasiswaController extends Controller
         $posts = Mahasiswa::where('nama', 'like', '%' . $data . '%')->paginate(5);
         return view('mahasiswas.index', compact('posts'));
     }
+    public function khs(Mahasiswa $mahasiswa)
+    {
+        $matkuls = $mahasiswa->matakuliah;
+
+        return view('mahasiswas.khs', [
+            'matkuls' => $matkuls,
+            'mahasiswa' => $mahasiswa
+        ]);
+    }
 }
